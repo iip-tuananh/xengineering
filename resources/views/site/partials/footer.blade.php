@@ -157,7 +157,7 @@
                                 </div>
                                 <a title="{{ $config->email }}"
                                    href="{{ $config->email }}"><span
-                                        class="__cf_email__" data-cfemail="b6c5c3c6c6d9c4c2f6c5d7c6d998c0d8">{{ $config->email }}</span></a>
+                                        class="__cf_email__" data-cfemail="">{{ $config->email }}</span></a>
                             </li>
                         </ul>
                     </div>

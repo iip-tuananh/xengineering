@@ -129,7 +129,7 @@ Từ thứ 2 đến chủ nhật
                                                 <a title="{{ $config->email }}"
                                                    href="{{ $config->email }}"><span
                                                         class="__cf_email__"
-                                                        data-cfemail="e794929797889593a794869788c99189">{{ $config->email }}</span></a>
+                                                        data-cfemail="">{{ $config->email }}</span></a>
                                             </div>
                                         </li>
 
