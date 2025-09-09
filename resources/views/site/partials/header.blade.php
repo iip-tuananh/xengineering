@@ -13,7 +13,7 @@
 
                 <div class="col-lg-2 col-12 no-padding">
                     <a href="{{ route('front.home-page') }}" class="logo" title="Logo" style="display: block;    padding: 10px; text-align: center">
-                        <img  height="100" style="max-height: 100px"
+                        <img  height="100" style="max-height: 95px"
                              src="{{ $config->image->path ?? '' }}"
                              alt="{{ $config->web_title }}">
                     </a>
