@@ -228,7 +228,7 @@ class CartController extends Controller
         $order = Order::query()->with('details', 'details.product', 'details.product.image')->find($orderId);
 
         session()->forget('order_id');
-        return view('site.checkout_success', compact('order'));
+        return view('site.orders.checkout_success', compact('order'));
     }
 
 }
