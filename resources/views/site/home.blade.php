@@ -5,8 +5,8 @@
 
 @section('css')
     <link rel="preload" as='style' type="text/css"
-          href="/site/assets/index.scss75d3.css?1719476197344">
-    <link href="/site/assets/index.scss75d3.css?1719476197344" rel="stylesheet"
+          href="/site/assets/index.scss75d3.css?1719476197344123">
+    <link href="/site/assets/index.scss75d3.css?1719476197344123" rel="stylesheet"
           type="text/css" media="all"/>
 @endsection
 
@@ -14,41 +14,43 @@
     <div class="bodywrap">
 
         <section class="section_slider">
-            <div class="home-slider swiper-container">
-                <div class="swiper-wrapper">
+            <div class="container">
+                <div class="row ">
+                    <div class="home-slider swiper-container">
+                        <div class="swiper-wrapper">
 
-                    @foreach($banners as $banner)
-                        <div class="swiper-slide">
-                            <div class="clearfix" title="Slider">
-                                <picture>
-                                    <source
-                                        media="(min-width: 1200px)"
-                                        srcset="{{ $banner->image->path ?? '' }}">
-                                    <source
-                                        media="(min-width: 992px)"
-                                        srcset="{{ $banner->image->path ?? '' }}">
-                                    <source
-                                        media="(min-width: 569px)"
-                                        srcset="{{ $banner->image->path ?? '' }}">
-                                    <source
-                                        media="(max-width: 567px)"
-                                        srcset="{{ $banner->image->path ?? '' }}">
-                                    <img width="1917" height="876"
-                                         src="{{ $banner->image->path ?? '' }}"
-                                         alt="Slider" class="img-responsive"/>
-                                </picture>
-                            </div>
-                            <div class="thumb-slider-text">
+                            @foreach($banners as $banner)
+                                <div class="swiper-slide">
+                                    <div class="clearfix" title="Slider">
+                                        <picture>
+                                            <source
+                                                media="(min-width: 1200px)"
+                                                srcset="{{ $banner->image->path ?? '' }}">
+                                            <source
+                                                media="(min-width: 992px)"
+                                                srcset="{{ $banner->image->path ?? '' }}">
+                                            <source
+                                                media="(min-width: 569px)"
+                                                srcset="{{ $banner->image->path ?? '' }}">
+                                            <source
+                                                media="(max-width: 567px)"
+                                                srcset="{{ $banner->image->path ?? '' }}">
+                                            <img width="1917" height="876"
+                                                 src="{{ $banner->image->path ?? '' }}"
+                                                 alt="Slider" class="img-responsive"/>
+                                        </picture>
+                                    </div>
+                                    <div class="thumb-slider-text">
 
-                                <div class="title">
-                                   {{ $banner->title }}
-                                </div>
-                                <div class="content">
-                                   {!! $banner->intro !!}
-                                </div>
-                                <a class="style-button" href="{{ route('front.contact') }}" title="Liên hệ">
-                                   Liên hệ
-                                    <span>
+                                        <div class="title">
+                                            {{ $banner->title }}
+                                        </div>
+                                        <div class="content" style="font-size: 50px">
+                                            {!! $banner->intro !!}
+                                        </div>
+                                        <a class="style-button" href="{{ route('front.contact') }}" title="Liên hệ">
+                                            Liên hệ
+                                            <span>
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                      class="bi bi-chevron-double-right" viewBox="0 0 16 16">
 									<path fill-rule="evenodd"
@@ -57,17 +59,20 @@
                                           d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
 								</svg>
 							</span>
-                                </a>
+                                        </a>
 
-                            </div>
+                                    </div>
+                                </div>
+
+                            @endforeach
+
+
                         </div>
 
-                    @endforeach
 
+                    </div>
 
                 </div>
-
-
             </div>
         </section>
 
@@ -333,49 +338,63 @@
         </section>
 
 
-        <section class="section_about2 lazyload"
-                 data-src="/site/assets/bg_about75d3.jpg?1719476197344">
+        <style>
+            /* bỏ background của section nếu CSS cũ đang set */
+            .section_about2 { background: none !important; }
+
+            /* nền giới hạn trong container */
+            .section_about2 .boxed-bg{
+                background: url('/site/assets/bg_about75d3.jpg?1719476197344') center/cover no-repeat;
+                border-radius: 14px;
+                padding: 24px;               /* tuỳ chỉnh khoảng đệm */
+            }
+
+            /* tuỳ chọn: tăng padding trên desktop */
+            @media (min-width: 992px){
+                .section_about2 .boxed-bg{ padding: 40px; }
+            }
+
+        </style>
+        <section class="section_about2"> <!-- bỏ lazy bg ở đây -->
             <div class="container">
-                <div class="row ">
-                    <div class="col-lg-6">
-				<span class="title">
-                    {{ $whyBlock->title }}
-				</span>
-                        <img width="711" height="427" class="lazyload"
-                             src="{{ $whyBlock->image->path ?? '' }}"
-                             data-src="{{ $whyBlock->image->path ?? '' }}"
-                             alt="Về Chúng Tôi">
-                    </div>
-                    <div class="col-lg-6">
-                        @if ($whyBlock->results && count($whyBlock->results))
-                            <div class="about-tab e-tabs not-dqtab">
+                <div class="boxed-bg">   <!-- nền chỉ rộng bằng container -->
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <span class="title">{{ $whyBlock->title }}</span>
+                            <img width="711" height="427" class="lazyload"
+                                 src="{{ $whyBlock->image->path ?? '' }}"
+                                 data-src="{{ $whyBlock->image->path ?? '' }}" alt="Về Chúng Tôi">
+                        </div>
+                        <div class="col-lg-6">
+                            @if ($whyBlock->results && count($whyBlock->results))
+                                <div class="about-tab e-tabs not-dqtab">
 
-                                <ul class="tabs tabs-title clearfix">
-                                    @foreach ($whyBlock->results as $key => $why)
-                                        <li class="tab-link {{ $loop->first ? 'active' : '' }}" data-tab="#tab-{{$key}}">
-                                            <h3>{{ $why['title'] }}</h3>
-                                        </li>
-                                    @endforeach
+                                    <ul class="tabs tabs-title clearfix">
+                                        @foreach ($whyBlock->results as $key => $why)
+                                            <li class="tab-link {{ $loop->first ? 'active' : '' }}" data-tab="#tab-{{$key}}">
+                                                <h3>{{ $why['title'] }}</h3>
+                                            </li>
+                                        @endforeach
 
-                                </ul>
-                                <div class="tab-float">
-                                    @foreach ($whyBlock->results as $key => $why)
+                                    </ul>
+                                    <div class="tab-float">
+                                        @foreach ($whyBlock->results as $key => $why)
 
-                                        <div id="tab-{{$key}}" class="tab-content {{ $loop->first ? 'active' : '' }} content_extab">
-                                            {{ $why['content'] }}
-                                        </div>
+                                            <div id="tab-{{$key}}" class="tab-content {{ $loop->first ? 'active' : '' }} content_extab">
+                                                {{ $why['content'] }}
+                                            </div>
 
-                                    @endforeach
+                                        @endforeach
 
 
 
+                                    </div>
                                 </div>
-                            </div>
-                        @endif
+                            @endif
 
-                        <a class="style-button" href="{{ route('front.contact') }}" title="Liên hệ ngay">
-                            Liên hệ ngay
-                            <span>
+                            <a class="style-button" href="{{ route('front.contact') }}" title="Liên hệ ngay">
+                                Liên hệ ngay
+                                <span>
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                              class="bi bi-chevron-double-right" viewBox="0 0 16 16">
 							<path fill-rule="evenodd"
@@ -384,12 +403,16 @@
                                   d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
 						</svg>
 					</span>
-                        </a>
+                            </a>
 
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
+
+
         <script>
             function activeTab(obj) {
                 $('.about-tab ul li').removeClass('active');
@@ -874,44 +897,53 @@
         </script>
 
 
-        <section class="section_danhgia lazyload"
-                 data-src="//bizweb.dktcdn.net/100/504/442/themes/940088/assets/background_danhgia.jpg?1719476197344">
+        <style>
+            /* bỏ nền full-width trên section nếu đang set ở nơi khác */
+            .section_danhgia{ background:none !important; }
+
+            /* nền chỉ trong container */
+            .section_danhgia .feedback-box{
+                background: url('//bizweb.dktcdn.net/100/504/442/themes/940088/assets/background_danhgia.jpg?1719476197344')
+                center/cover no-repeat;
+                border-radius: 14px;
+                padding: 24px;
+            }
+            @media (min-width:992px){
+                .section_danhgia .feedback-box{ padding: 40px; }
+            }
+
+            /* nếu muốn bo góc cả slider bên trong */
+            .section_danhgia .danhgia-slider{ overflow:hidden; border-radius: 10px; }
+
+        </style>
+        <section class="section_danhgia">
             <div class="container">
-		<span class="title-smail">
+                <div class="feedback-box">
+                    <span class="title-smail"></span>
+                    <h3 class="title">Đánh giá từ khách hàng</h3>
 
-		</span>
-                <h3 class="title">
-                    Đánh giá từ khách hàng
-                </h3>
-
-                <div class="danhgia-slider swiper-container">
-                    <div class="swiper-wrapper">
-                        @foreach($feedbacks as $feedback)
-                            <div class="swiper-slide">
-                                <div class="item">
-                                    <div class="avatar">
-                                        <img width="200" height="200" alt="{{ $feedback->name }}" class="lazyload"
-                                             src="{{ $feedback->image->path ?? '' }}"
-                                             data-src="{{ $feedback->image->path ?? '' }}">
+                    <div class="danhgia-slider swiper-container">
+                        <div class="swiper-wrapper">
+                            @foreach($feedbacks as $feedback)
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <div class="avatar">
+                                            <img width="200" height="200" alt="{{ $feedback->name }}" class="lazyload"
+                                                 src="{{ $feedback->image->path ?? '' }}"
+                                                 data-src="{{ $feedback->image->path ?? '' }}">
+                                        </div>
+                                        <div class="content">{{ $feedback->message }}</div>
+                                        <div class="name">{{ $feedback->name }}</div>
+                                        <div class="job">{{ $feedback->position }}</div>
                                     </div>
-
-
-                                    <div class="content">
-                                       {{ $feedback->message }}
-                                    </div>
-                                    <div class="name">
-                                        {{ $feedback->name }}
-                                    </div>
-                                    <div class="job"> {{ $feedback->position }}</div>
-
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
-
                 </div>
             </div>
         </section>
+
         <script>
             var swiper = new Swiper('.danhgia-slider', {
                 autoplay: false,

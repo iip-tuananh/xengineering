@@ -21,7 +21,8 @@
 .section_slider .home-slider .swiper-slide .thumb-slider-text {
     text-align: left;
     position: absolute;
-    top: 50%;
+    /*top: 50%;*/
+    top: 60%;
     transform: translate(0, -50%);
     left: 50%;
     color: #fff;
