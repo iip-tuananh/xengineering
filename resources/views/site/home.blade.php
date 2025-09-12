@@ -5,8 +5,8 @@
 
 @section('css')
     <link rel="preload" as='style' type="text/css"
-          href="/site/assets/index.scss75d3.css?1719476197344123">
-    <link href="/site/assets/index.scss75d3.css?1719476197344123" rel="stylesheet"
+          href="/site/assets/index.scss75d3.css?v=1.2">
+    <link href="/site/assets/index.scss75d3.css?v=1.2" rel="stylesheet"
           type="text/css" media="all"/>
 @endsection
 
@@ -45,7 +45,7 @@
                                         <div class="title">
                                             {{ $banner->title }}
                                         </div>
-                                        <div class="content" style="font-size: 50px">
+                                        <div class="content" style="font-size: 42px">
                                             {!! $banner->intro !!}
                                         </div>
                                         <a class="style-button" href="{{ route('front.contact') }}" title="Liên hệ">
@@ -90,6 +90,14 @@
             });
         </script>
 
+        <style>
+            @media (max-width: 767.98px){
+                .section_about{
+                    padding-top: 0 !important; /* thêm !important nếu đang có rule cũ ghi đè */
+                }
+            }
+
+        </style>
 
         <section class="section_about">
             <div class="container">
@@ -176,7 +184,7 @@
             }
 
             .section_giaiphap .title {
-                font-size: 48px;
+                font-size: 38px;
                 line-height: 56px;
                 z-index: 9;
                 padding: 0;
@@ -245,7 +253,7 @@
             }
 
         </style>
-        <section class="section_giaiphap">
+        <section class="section_giaiphap" style="padding-bottom: 0">
             <div class="container">
 {{--                <span class="title-smail">--}}
 {{--			Kinh nghiệm tuyệt vời trong việc xây dựng--}}
@@ -355,7 +363,7 @@
             }
 
         </style>
-        <section class="section_about2"> <!-- bỏ lazy bg ở đây -->
+        <section class="section_about2" style="padding-bottom: 0"> <!-- bỏ lazy bg ở đây -->
             <div class="container">
                 <div class="boxed-bg">   <!-- nền chỉ rộng bằng container -->
                     <div class="row">
@@ -788,7 +796,7 @@
 
 
         @foreach($categoriesSpecial as $cateSpecial)
-            <section class="section_product">
+            <section class="section_product" style="padding-bottom: 0">
                 <div class="container">
 {{--		<span class="title-smail">--}}
 {{--			Một số sản phẩm--}}
@@ -916,7 +924,7 @@
             .section_danhgia .danhgia-slider{ overflow:hidden; border-radius: 10px; }
 
         </style>
-        <section class="section_danhgia">
+        <section class="section_danhgia" style="padding-bottom: 0">
             <div class="container">
                 <div class="feedback-box">
                     <span class="title-smail"></span>
@@ -1025,7 +1033,7 @@
         </style>
 
 
-        <section class="section_product partners">
+        <section class="section_product partners" style="padding-bottom: 0;">
             <div class="container">
                 <h3 class="title">
                     <a class="title-name" href="#" title="Đối tác chiến lược">Đối tác chiến lược</a>

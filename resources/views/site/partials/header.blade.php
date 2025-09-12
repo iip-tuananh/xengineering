@@ -143,17 +143,88 @@
                                                     </a>
                                                 </li>
 
-                                                <li class="nav-item {{ request()->routeIs('front.services') ? 'active' : '' }} ">
-                                                    <a class="a-img" href="{{ route('front.services') }}" title=" Dịch vụ">
+
+                                                <li class="nav-item    has-mega {{ request()->routeIs('front.services') ? 'active' : '' }}" >
+                                                    <a class="a-img caret-down" href="{{ route('front.services') }}" title="Dịch vụ">
                                                         Dịch vụ
                                                     </a>
+                                                    <i class="fa fa-caret-down"></i>
+
+                                                    <div class="mega-content d-lg-block d-none">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <ul class="level0">
+
+                                                                    @foreach($services as $service)
+                                                                        <li class="level1 parent item" >
+                                                                            <a class="hmega" href="{{ route('front.getServiceDetail', $service->slug) }}" title="{{ $service->name }}">{{ $service->name }}</a>
+                                                                        </li>
+
+                                                                    @endforeach
+
+
+
+                                                                </ul>
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <ul class="item_small d-lg-none d-block">
+                                                        @foreach($services as $service)
+                                                            <li>
+                                                                <a class="" href="{{ route('front.getServiceDetail', $service->slug) }}" title="{{ $service->name }}">
+                                                                    {{ $service->name }}
+                                                                </a>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+
                                                 </li>
 
-                                                <li class="nav-item {{ request()->routeIs('front.getProductList') ? 'active' : '' }} ">
-                                                    <a class="a-img" href="{{ route('front.getProductList') }}" title="Sản phẩm">
+
+                                                <li class="nav-item    has-mega {{ request()->routeIs('front.getProductList') ? 'active' : '' }}" >
+                                                    <a class="a-img caret-down" href="{{ route('front.getProductList') }}" title="Sản phẩm">
                                                         Sản phẩm
                                                     </a>
+                                                    <i class="fa fa-caret-down"></i>
+
+                                                    <div class="mega-content d-lg-block d-none">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <ul class="level0">
+
+                                                                    @foreach($categories as $category)
+                                                                        <li class="level1 parent item" >
+                                                                            <a class="hmega" href="{{ route('front.getProductList', $category->slug) }}" title="{{ $category->name }}">{{ $category->name }}</a>
+                                                                        </li>
+
+                                                                    @endforeach
+
+
+
+                                                                </ul>
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <ul class="item_small d-lg-none d-block">
+                                                        @foreach($categories as $category)
+                                                            <li>
+                                                                <a class="" href="{{ route('front.getProductList', $category->slug) }}" title="{{ $category->name }}">
+                                                                    {{ $category->name }}
+                                                                </a>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+
                                                 </li>
+
+
+
 
                                                 <li class="nav-item {{ request()->routeIs('front.projects') ? 'active' : '' }} ">
                                                     <a class="a-img" href="{{ route('front.projects') }}" title="Dự án">

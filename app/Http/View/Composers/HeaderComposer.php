@@ -5,6 +5,8 @@ namespace App\Http\View\Composers;
 use App\Model\Admin\Category;
 use App\Model\Admin\Config;
 use App\Model\Admin\PostCategory;
+use App\Model\Admin\Project;
+use App\Model\Admin\Service;
 use App\Model\Admin\Store;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -29,10 +31,7 @@ class HeaderComposer
             ->where('type', PostCategory::TYPE_POST)
             ->where('parent_id', 0)->orderBy('sort_order')->get();
 
-        $categoriesProject = PostCategory::query()->whereHas('projects', function($q) {
-                $q->where('status', 1);
-            })
-            ->where('type', PostCategory::TYPE_PROJECT)->orderBy('sort_order', 'asc')->get();
+        $services = Service::query()->where('status', 1)->latest()->get();
 
         $categoriesService = PostCategory::query()
             ->with(['services' => function($q) {
@@ -43,13 +42,6 @@ class HeaderComposer
             ->orderBy('sort_order', 'asc')
             ->get();
 
-        $categoriesknoweg = PostCategory::query()
-            ->with(['childs' => function($q) {
-                $q->orderBy('sort_order', 'asc');
-            }])
-            ->where('parent_id', 0)
-            ->where('type', PostCategory::TYPE_KIENTHUC)->orderBy('sort_order', 'asc')->get();
-
 
         $categoriesAbout = PostCategory::query()->where('parent_id', 0)
 //            ->whereHas('posts', function($q) {
@@ -59,8 +51,8 @@ class HeaderComposer
 
 
         $view->with(['config' => $config, 'cartItems' => $cartItems, 'totalPriceCart' => $totalPriceCart, 'categories' => $categories,
-            'postsCategory' => $postsCategory, 'categoriesProject' => $categoriesProject, 'categoriesService' => $categoriesService,
-            'categoriesknoweg' => $categoriesknoweg, 'categoriesAbout' => $categoriesAbout
+            'postsCategory' => $postsCategory, 'categoriesService' => $categoriesService, 'services' => $services,
+             'categoriesAbout' => $categoriesAbout
         ]);
     }
 }

@@ -1329,7 +1329,7 @@ button, input, optgroup, select, textarea {
         font-weight: 600;
         margin-bottom: 10px;
         display: inline-block;
-        font-size: 18px
+        font-size: 16px
     }
 
     .header-menu .header-menu-des .header-nav > ul.item_big > li.nav-item.has-mega .mega-content .level1.parent a.hmega:hover, .header-menu .header-menu-des .header-nav > ul.item_big > li.nav-item.has-mega .mega-content .level1.parent a.hmega:focus {
